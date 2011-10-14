@@ -1,0 +1,27 @@
+.nav {font-family: Arial; font-size : 13px; color : #FF9933; font-weight : bold; text-decoration : none; PADDING-LEFT: 20}
+.nav:Hover {font-family: Arial; font-size : 13px; text-decoration : none; color :gray; font-weight : bold PADDING-LEFT: 20}
+.selected{font-family: Arial; font-size : 13px; text-decoration : none; color : gray; font-weight : bold; PADDING-LEFT: 20}
+.selected:Hover{font-family: Arial; font-size : 13px; text-decoration : none; color : #ff9900; font-weight : bold; PADDING-LEFT: 20}
+
+.linkbox{color: ff9900; font-family: Arial; font-size : 12px; font-weight: bold; text-decoration: none}
+.linkbox:Hover {text-decoration : none; font-family: Arial; font-size : 12px; font-weight: bold; color :gray}
+
+.tdright{background-color: #DDDDDD}
+
+.atoz{color: FF9900; font-family: Arial; font-size : 14px; font-weight : bold; text-decoration: none}
+.atoz:Hover {font-family: Arial; font-size : 14px; font-weight : bold; color : gray}
+
+.verb{color: blue; font-family: Arial; font-size: 12; font-weight : bold; text-decoration: none}
+.verb:Hover {font-family: Arial; font-weight : bold; font-size: 12; color : FF9900}
+
+.article{font-family: Arial; font-weight: bold; font-size: 13; text-decoration: none; color: #ff9900}
+.article:Hover{font-family: Arial; font-weight: bold; font-size: 13; text-decoration: none; color: gray}
+.articleselected{font-family: Arial; font-weight: bold; font-size: 13; text-decoration: none; color: gray}
+
+input.orange {background-color: #DDDDDD; font-size: 14px; color: black;}
+option.orange {background-color: #DDDDDD; font-weight: bold; font-size: 14px; color: black;}
+textarea.orange {background-color: #DDDDDD; font-size: 12px; color: black;}
+
+.h1 {font-size: 12px}
+
+.repeat { background-repeat: repeat-x; }

@@ -1,0 +1,85 @@
+/*===============================================
+    POV-Ray - BlobMan People Costume Definition File
+ File Name : Fempose.pos
+ BM_Version: 4.2
+ Desciption: Female Pose Definition File
+ Date      : July 2000 
+ Author    : Ulrich von Bek 
+ Email     : ulrich_von_bek@hotmail.com 
+ WWW       :             
+ Notes     : Fempose.pos version 1.0 
+    This .pos file is based on the standard pose file by Peter Houston 
+    who created Blobman 4.2, and thus inspired me to waste my time writing
+    .pos files...
+     
+    Email: houston.graphics@iname.com  
+    WWW: http://welcome.to/HoustonGraphics 
+         http://members.xoom.com/HosutonGraph
+
+    Poses: The pose file Fempose.pos contains 13 poses
+           These are the standard poses modified to function with the
+           High Heeled Shoes, plus a bonus pose. None of the poses 
+           include hair, I would suggest that if you do use hair, 
+           disable the wig, or keep the hair very, very short. Otherwise 
+           it will sprout through the surface of the wig.
+====================================================----=*/        
+
+/************************************************************
+  BlobMan People Pose File for use with bmpeople.inc
+*************************************************************/
+#include "bm_hands.inc"
+#include "bm_hair.inc"
+
+/************************************************************
+  Blob Man Pose File for use with Blob_Man.inc
+*************************************************************/
+#declare BM_Pose=array[13][17]
+  {
+//     BM_Head_Rot   ,BM_Neck_Rot   ,BM_Torso_Rot  ,BM_RA_S2E     ,BM_RA_E2W     ,BM_LA_S2E     ,BM_LA_E2W     ,BM_RL_H2K     ,BM_RL_K2A     ,BM_LL_H2K     ,BM_LL_K2A     ,BM_RF_Rot     ,BM_LF_Rot     ,BM_Toe_Angle  ,BM_RH_Rot     ,BM_LH_Rot   ,Hands           Comment
+     { <0,0,0>       ,<0,0,0>       ,<0,0,0>       ,<-8,0,-8>     ,<8,0,-3>      ,<-8,0,8>      ,<8,0,3>       ,<8,0,-5>      ,<-8,0,3>      ,<8,0,5>       ,<-8,0,-3>     ,<-42,0,-3>    ,<-42,0,3>     ,<50,0,50>     ,<0,0,0>       ,<0,0,0>     ,<0,0,0> },      
+     // 0 = Standing Relaxed
+     { <0,0,0>       ,<0,0,0>       ,<0,0,0>       ,<0,0,-50>     ,<0,0,45>      ,<0,0,50>      ,<0,0,-45>     ,<0,0,0>       ,<0,0,0>       ,<0,0,0>       ,<0,0,0>       ,<-50,0,0>     ,<-50,0,0>     ,<50,0,50>     ,<0,0,-45>     ,<0,0,45>    ,<0,0,0> },      
+     // 1 = Standing Hands on Hips
+     { <0,0,0>       ,<5,0,0>       ,<-5,0,0>      ,<0,0,-15>     ,<60,0,-15>    ,<0,0,15>      ,<60,0,15>     ,<80,45,0>     ,<10,0,90>     ,<80,-45,0>    ,<-5,0,-100>   ,<-30,0,0>     ,<-30,0,0>     ,<50,0,50>     ,<0,100,-20>   ,<0,-100,20> ,<11,0,11> },    
+     // 2 = Meditation
+     { <0,0,0>       ,<0,0,0>       ,<0,0,0>       ,<25,0,-20>    ,<90,0,0>      ,<25,0,20>     ,<90,0,0>      ,<90,15,0>     ,<0,0,0>       ,<90,-15,0>    ,<0,0,0>       ,<-50,0,0>     ,<-50,0,0>     ,<50,0,50>     ,<-10,-90,0>   ,<10,90,0>   ,<0,0,0> , },    
+     // 3 = Sitting at Table/Piano etc
+     { <0,0,0>       ,<0,0,0>       ,<0,0,0>       ,<-10,5,-35>   ,<10,0,10>     ,<-10,-5,35>   ,<10,0,-10>    ,<8,0,-15>     ,<-8,0,0>      ,<8,0,15>      ,<-8,0,0>      ,<-42,0,0>     ,<-42,0,0>     ,<50,0,50>     ,<0,0,10>      ,<0,0,-10>   ,<0,0,0> },      
+     // 4 = Gunfighter
+     { <-10,0,0>     ,<-10,0,0>     ,<0,0,0>       ,<25,0,0>      ,<145,-50,-4>  ,<25,0,0>      ,<145,50,4>    ,<65,10,0>     ,<-90,0,0>     ,<65,-10,0>    ,<-90,0,0>     ,<-65,0,0>     ,<-65,0,0>     ,<50,0,50>     ,<30,-30,-20>  ,<30,30,20>  ,<12,0,12> },    
+     // 5 = Praying on Knees
+     { <45,0,0>      ,<0,0,0>       ,<0,0,0>       ,<145,20,0>    ,<210,0,0>     ,<145,-20,0>   ,<210,0,0>     ,<65,10,0>     ,<-90,0,0>     ,<65,-10,0>    ,<-90,0,0>     ,<-65,0,0>     ,<-65,0,0>     ,<50,0,50>     ,<30,-30,-60>  ,<30,30,60>  ,<0,0,0> },      
+     // 6 = "We're Not Worthy"
+     { <30,0,0>      ,<30,0,0>      ,<0,0,0>       ,<0,0,-150>    ,<0,90,-180>   ,<0,0,150>     ,<0,-90,180>   ,<45,0,-10>    ,<-45,0,-10>   ,<-5,0,10>     ,<-5,0,10>     ,<-5,0,0>      ,<-45,0,0>     ,<50,0,50>     ,<0,0,-90>     ,<0,0,90>    ,<12,0,12> },    
+     // 7 = Hand Stand
+     { <0,-10,0>     ,<0,0,0>       ,<0,0,0>       ,<-10,0,-120>  ,<0,15,-260>   ,<-10,0,120>   ,<0,15,259>    ,<45,0,0>      ,<-30,0,0>     ,<10,0,10>     ,<-8,0,0>      ,<-60,0,0>     ,<-42,-15,0>   ,<50,0,50>     ,<0,100,0>     ,<0,-100,0>  ,<12,0,12> },    
+     // 8 = Sun Bathing
+     { <0,50,0>      ,<0,0,0>       ,<0,15,0>      ,<85,45,0>     ,<110,30,0>    ,<60,-60,0>    ,<85,-30,0>    ,<50,45,0>     ,<0,45,0>      ,<45,-45,0>    ,<-15,-30,0>   ,<-50,0,0>     ,<-35,0,0>     ,<50,0,50>     ,<0,-90,0>     ,<0,90,0>    ,<0,0,0> },      
+     // 9 = Surfer
+     { <0,10,10>     ,<0,0,10>      ,<0,0,18>      ,<-20,0,15>    ,<45,0,-33>    ,<-8,0,146>    ,<8,0,273>     ,<25,0,0>      ,<0,0,7.5>     ,<8,0,-1>      ,<-8,0,-1>     ,<-50,0,8>     ,<-42,0,-8>    ,<50,0,50>     ,<15,0,30>     ,<0,180,-75> ,<0,0,0> },      
+     // 10 = Reclined (Male)
+     { <0,10,10>     ,<0,0,10>      ,<0,0,17>      ,<-20,0,15>    ,<45,0,-40>    ,<-8,0,138>    ,<8,0,273>     ,<25,0,0>      ,<0,0,7.5>     ,<8,0,0>       ,<-8,0,0>      ,<-50,0,8>     ,<-42,0,-8>    ,<50,0,50>     ,<30,0,50>     ,<0,180,-75> ,<0,0,1> },      
+     // 11 = Reclined (Female)
+     { <0,0,0>       ,<0,0,0>       ,<0,0,0>       ,<0,0,-110>    ,<0,0,-120>    ,<0,0,110>     ,<0,0,120>     ,<0,0,-4>      ,<0,0,0>       ,<0,0,4>       ,<0,0,0>       ,<-50,0,0>     ,<-50,0,0>     ,<50,0,50>     ,<0,90,0>      ,<0,-90,0>   ,<0,0,1> },      
+     // 12 = Crucified
+  }
+
+// Special feature used in Tufgirlz.cdf Parsing messages
+#declare BM_Pose_Title=array[13]
+    {
+        "Standing Relaxed",
+        "Standing Hands on Hips",
+        "Meditation",
+        "Sitting at Table/Piano etc",
+        "Gunfighter",
+        "Praying on Knees",
+        "We're Not Worthy",
+        "Hand Stand",
+        "Sun Bathing",
+        "Surfer",
+        "Reclined (Male)",
+        "Reclined (Female)",
+        "Crucified"
+    }
+    
+// end of pose definition file

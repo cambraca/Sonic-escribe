@@ -1,0 +1,801 @@
+<html>
+<head><title>Blobman Animator - by Camilo Bravo</title></head>
+<script language="JavaScript" SRC="cookie.js"></SCRIPT>
+<body bgcolor="000000">
+<form name=principal>
+<table width=100% height=100% cellspacing=5 cellpadding=5>
+
+	<tr>
+		<td>
+			<table align="center" bgcolor="#00CC66" cellspacing=4 border=0>
+				<tr>
+					<td align="center"><input type="button" value="Load" onclick="load();"></td>
+					<td align="center">
+						<select name="slot">
+							<option>Slot 1
+							<option>Slot 2
+							<option>Slot 3
+							<option>Slot 4
+							<option>Slot 5
+							<option>Slot 6
+							<option>Slot 7
+							<option>Slot 8
+							<option>Slot 9
+							<option>Slot 10
+						</select>
+					</td>
+					<td align="center"><input type="button" value="Save" onclick="save();"></td>
+					<td align="center"><input type="button" value="Clear Slot" onclick="clearslot();"></td>
+				</tr>
+			</table>
+			<table align="center" bgcolor="#00CC66" cellspacing=4 border=0>
+				<tr>
+					<td align="center"><input type="button" value="External Load" onclick="load2();"></td>
+					<td align="center"><font size="1">when saving, copy this text to any file...<br><input type="text" name="external" size="20"><br>...when loading, copy the text you saved here</font></td>
+					<td align="center"><input type="button" value="External Save" onclick="save2();"></td>
+					<td align="center"><input type="button" value="Clear" onclick="document.principal.external.value='';"></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			<table cellspacing=0 cellpadding=0 width=100% bgcolor="6699FF" border=0>
+				<tr bgcolor="66FFCC">
+					<td colspan=2 align="center"><B>No.</B></td>
+					<td rowspan=2 align="center"><B>Data</B></td>
+					<td rowspan=2 colspan=2 align="center" width=100%><B>Description</B></td>
+				</tr>
+				<tr>
+					<td align="center" onclick="n_rowmenostodo()"><table width=100% height=100% border=2 cellspacing=0 cellpadding=0><tr><td align="center"><font size="1" color="ffffff">/\<br>/\</font></td></tr></table></td>
+					<td align="center" onclick="n_rowmenos()" onDblClick="n_rowmenos2()"><table width=100% height=100% border=2 cellspacing=0 cellpadding=0><tr><td align="center"><font size="1" color="ffffff">/\</font></td></tr></table></td>
+				</tr>
+				<script language="JavaScript">
+					for (i=0;i<3;i++) {
+						document.writeln("<tr>")
+						document.writeln("<td colspan=2 align='center'><input type='text' name='n"+i+"_1' size='1'></td>")
+						document.writeln("<td align='center'><input type='text' name='n"+i+"_2' size='30'></td>")
+						document.writeln("<td align='center'><input type='text' name='n"+i+"_3' size='50'></td>")
+						document.writeln("<td><table cellspacing=0 cellpadding=0><tr><td><img src='yes.gif' width=15 height=15 onclick='n_yes("+i+")'></td></tr><tr><td><img src='no.gif' width=15 height=15 onclick='n_no("+i+")'></td></tr></table></td>")
+						document.writeln("</tr>")
+						}
+				</script>
+				<tr bgcolor="66FFCC">
+					<td bgcolor="#6699ff" align="center" onclick="n_rowmastodo()"><table width=100% height=100% border=2 cellspacing=0 cellpadding=0><tr><td align="center"><font size="1" color="ffffff">\/<br>\/</font></td></tr></table></td>
+					<td bgcolor="#6699ff" align="center" onclick="n_rowmas()" onDblClick="n_rowmas2()"><table width=100% height=100% border=2 cellspacing=0 cellpadding=0><tr><td align="center"><font size="1" color="ffffff">\/</font></td></tr></table></td>
+					<td colspan=3 align="center">
+						<table cellspacing=0 cellpadding=0 width=100%>
+							<tr>
+								<td align="center">
+									Pre-defined:&nbsp;<select name="n_predefined" onchange="n_change(this.selectedIndex)">
+										<option>Blobman 4.2 (complete)
+										<option>Blobman 4.2 (body)
+										<option>Blobman 4.2 (fingers)
+									</select>
+								</td>
+								<td align="right"><input type="button" value="Clear Names" onclick="n_borrartodo()"></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+
+	<tr>
+		<td>
+			<table cellspacing=0 cellpadding=0 width=100% bgcolor="6699FF" border=0>
+				<tr bgcolor="66FFCC"><!-- fila de títulos -->
+					<td colspan=2 align="center"><B>No.</B></td>
+					<td rowspan=3 align="center"><B>Name</B></td>
+					<td colspan=12 align="center" width=100%><B>Clock</B></td>
+					<td colspan=2 rowspan=3 align="center"><B>Value</B></td>
+				</tr>
+				<tr bgcolor="66FFCC"><!-- fila de valores de clock -->
+					<td bgcolor="#6699ff" rowspan=2 align="center" onclick="rowmenostodo()"><table width=100% height=100% border=2 cellspacing=0 cellpadding=0><tr><td align="center"><font size="1" color="ffffff">/\<br>/\</font></td></tr></table></td>
+					<td bgcolor="#6699ff" rowspan=2 align="center" onclick="rowmenos()" onDblClick="rowmenos2()"><table width=100% height=100% border=2 cellspacing=0 cellpadding=0><tr><td align="center"><font size="1" color="ffffff">/\</font></td></tr></table></td>
+					<td bgcolor="#6699ff" align="center" onclick="clockmenostodo()"><table width=100% height=100% border=2 cellspacing=0 cellpadding=0><tr><td align="center"><font size="1" color="ffffff">&lt;&lt;</font></td></tr></table></td>
+					<script language="JavaScript">
+						for (i=1;i<=10;i++) {
+							document.write("<td rowspan=2 align='center'><input type='text' name='clock"+i+"' size='3'></td>")
+							}
+					</script>
+					<td bgcolor="#6699ff" align="center" onclick="clockmastodo()"><table width=100% height=100% border=2 cellspacing=0 cellpadding=0><tr><td align="center"><font size="1" color="ffffff">&gt;&gt;</font></td></tr></table></td>
+				</tr>
+				<tr bgcolor="#6699ff">
+					<td align="center" onclick="clockmenos()" onDblClick="clockmenos2()"><table width=100% height=100% border=2 cellspacing=0 cellpadding=0><tr><td align="center"><font size="1" color="ffffff">&lt;</font></td></tr></table></td>
+					<td align="center" onclick="clockmas()" onDblClick="clockmas2()"><table width=100% height=100% border=2 cellspacing=0 cellpadding=0><tr><td align="center"><font size="1" color="ffffff">&gt;</font></td></tr></table></td>
+				</tr>
+				<script language="JavaScript">
+					for (i=0;i<10;i++) {
+						document.writeln("<tr>")
+						document.writeln("<td colspan=2 align='center'><input type='text' name='r"+i+"_1' size='1'></td>")
+						document.writeln("<td align='center'><input type='text' name='r"+i+"_2' size='12'></td>")
+						document.writeln("<td></td>")
+						for (o=0;o<10;o++) {
+							document.writeln("<td align='center' onclick='marcarclock("+o+");document.principal.r"+i+"_4_1.focus();'><img src='empty2.gif' name='r"+i+"_3_"+o+"'></td>")
+							}
+						document.writeln("<td></td>")
+						document.writeln("<td align='center'>&lt;&nbsp;<input type='text' name='r"+i+"_4_1' size='3'>,&nbsp;<input type='text' name='r"+i+"_4_2' size='3'>,&nbsp;<input type='text' name='r"+i+"_4_3' size='3'>&nbsp;&gt;</td>")
+						document.writeln("<td><table cellspacing=0 cellpadding=0><tr><td><img src='yes.gif' width=15 height=15 onclick='yes("+i+")'></td></tr><tr><td><img src='no.gif' width=15 height=15 onclick='no("+i+")'></td></tr></table></td>")
+						document.writeln("</tr>")
+						}
+				</script>
+				<tr bgcolor="66FFCC">
+					<td bgcolor="#6699ff" rowspan=2 align="center" onclick="rowmastodo()"><table width=100% height=100% border=2 cellspacing=0 cellpadding=0><tr><td align="center"><font size="1" color="ffffff">\/<br>\/</font></td></tr></table></td>
+					<td bgcolor="#6699ff" rowspan=2 align="center" onclick="rowmas()" onDblClick="rowmas2()"><table width=100% height=100% border=2 cellspacing=0 cellpadding=0><tr><td align="center"><font size="1" color="ffffff">\/</font></td></tr></table></td>
+					<td></td>
+					<td></td>
+					<script language="JavaScript">
+						for (i=0;i<10;i++) {
+							document.writeln("<td align='center' onclick='marcarclock("+i+")'><img src='empty.gif' width=15 height=20 name='marcador"+i+"'></td>")
+							}
+					</script>
+					<td></td>
+					<td colspan=2>
+						<table align=right cellspacing=0 cellpadding=0>
+							<tr>
+								<td align=center><input type="button" value="Clear Data" onclick="cleardata();"></td>
+							</tr>
+						</table>
+					</td>
+			</table>
+		</td>
+	</tr>
+
+	<tr bgcolor=#FFCC99>
+		<td align=center>
+			<table>
+				<tr>
+					<td>
+						Copy and paste:<br>
+						<textarea name=copypaste cols=40 rows=6></textarea>
+					</td>
+					<td width=100%></td>
+					<td>
+						<input type="button" value="Process" onclick="process()">
+						<input type="button" value="Delete" onclick="document.principal.process2.value='';">
+						<textarea name=process2 cols=40 rows=5></textarea><br>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+
+</table>
+</form>
+</body>
+
+<script language="JavaScript1.3">
+
+	var trackprincipio=1;
+
+	//de CLOCK
+	var clockprincipio=0;		//el valor del primer clock visible en la pantalla
+	var clockdistancia=0.25;		//la distancia entre cada clock
+	var clockfinal=10;		//lo máximo para clock
+
+	//de los DATOS
+	//definir
+	dato=new Array()					//dato[track][tiempo][si/no,dato1,dato2,dato3]
+	for (i=0;i<100;i++) {
+		dato[i]=new Array()
+		for (o=0;o<=clockfinal;o=o+clockdistancia) {
+			dato[i][o]=new Array()
+			dato[i][o][0]=0		//no hay dato
+			}
+		}
+
+	//para NOMBRES
+	nombre=new Array()					//nombre[track][0/1]
+	for (i=0;i<100;i++) {
+		nombre[i]=new Array()
+		}
+	var n_principio=0;
+	function restaurar_n() {
+		document.principal.n0_1.value=n_principio+1;
+		document.principal.n1_1.value=n_principio+2;
+		document.principal.n2_1.value=n_principio+3;
+		document.principal.n0_2.value=nombre[0+n_principio][0];
+		document.principal.n1_2.value=nombre[1+n_principio][0];
+		document.principal.n2_2.value=nombre[2+n_principio][0];
+		document.principal.n0_3.value=nombre[0+n_principio][1];
+		document.principal.n1_3.value=nombre[1+n_principio][1];
+		document.principal.n2_3.value=nombre[2+n_principio][1];
+		}
+	restaurar_n()
+	function n_rowmenos() {
+		n_principio=n_principio-1;
+		if (n_principio<0) {n_principio=0}
+		restaurar_n()
+		}
+	function n_rowmenos2() {
+		n_principio=n_principio-2;
+		if (n_principio<0) {n_principio=0}
+		restaurar_n()
+		}
+	function n_rowmenostodo() {
+		n_principio=0;
+		restaurar_n()
+		}
+	function n_rowmas() {
+		n_principio++
+		if (n_principio>97) {n_principio=97;}
+		restaurar_n()
+		}
+	function n_rowmas2() {
+		n_principio++
+		n_principio++
+		if (n_principio>97) {n_principio=97;}
+		restaurar_n()
+		}
+	function n_rowmastodo() {
+		n_principio=97
+		restaurar_n()
+		}
+	function n_yes(temp) {
+		var temp2="n"+temp+"_2";
+		nombre[n_principio+temp][0]=document.principal[temp2].value;
+		var temp2="n"+temp+"_3";
+		nombre[n_principio+temp][1]=document.principal[temp2].value;
+		vertrackstotal()
+		restaurar_n()
+		restaurartracks()
+		crearcodigo()
+		}
+	function n_no(temp) {
+		nombre[n_principio+temp][0]=""; nombre[n_principio+temp][1]="";
+		vertrackstotal()
+		restaurar_n()
+		restaurartracks()
+		crearcodigo()
+		}
+	function vertrackstotal() {
+		trackstotal=0;
+		for (i=99;i>=0;i=i-1) {
+			if (nombre[i][0] || nombre[i][1]) {
+				if (trackstotal==0) {trackstotal=i+1;}
+				}
+			}
+		if (trackstotal<=0) {trackstotal=1;}
+		}
+	function n_change(temp) {
+		switch (temp) {
+			case 0:
+				trackstotal=26;
+				nombre[0][0]="BM_Head_Rot"; nombre[0][1]="Head"
+				nombre[1][0]="BM_Neck_Rot"; nombre[1][1]="Neck (Note y is not used)"
+				nombre[2][0]="BM_Torso_Rot"; nombre[2][1]="Upper Torso (Chest)"
+				nombre[3][0]="BM_RA_S2E"; nombre[3][1]="Right Upper Arm"
+				nombre[4][0]="BM_RA_E2W"; nombre[4][1]="Right Forearm"
+				nombre[5][0]="BM_LA_S2E"; nombre[5][1]="Left Upper Arm"
+				nombre[6][0]="BM_LA_E2W"; nombre[6][1]="Left Forearm"
+				nombre[7][0]="BM_RL_H2K"; nombre[7][1]="Right Thigh"
+				nombre[8][0]="BM_RL_K2A"; nombre[8][1]="Right Lower Leg"
+				nombre[9][0]="BM_LL_H2K"; nombre[9][1]="Left Thigh"
+				nombre[10][0]="BM_LL_K2A"; nombre[10][1]="Left Lower Leg"
+				nombre[11][0]="BM_RF_Rot"; nombre[11][1]="Right Foot"
+				nombre[12][0]="BM_LF_Rot"; nombre[12][1]="Left Foot"
+				nombre[13][0]="BM_RH_Rot"; nombre[13][1]="Right Hand"
+				nombre[14][0]="BM_LH_Rot"; nombre[14][1]="Left Hand"
+				nombre[15][0]="BM_Toe_Angle"; nombre[15][1]="Toe Angle, x=Left Foot, z=Right Foot"
+				nombre[16][0]="BM_RFP_Pos"; nombre[16][1]="Pinky R Hand"
+				nombre[17][0]="BM_RFR_POs"; nombre[17][1]="Ring R Hand"
+				nombre[18][0]="BM_RFM_POs"; nombre[18][1]="Middle R Hand"
+				nombre[19][0]="BM_RFI_POs"; nombre[19][1]="Index R Hand"
+				nombre[20][0]="BM_RFT_POs"; nombre[20][1]="Thumb R Hand"
+				nombre[21][0]="BM_LFP_Pos"; nombre[21][1]="Pinky L Hand"
+				nombre[22][0]="BM_LFR_POs"; nombre[22][1]="Ring L Hand"
+				nombre[23][0]="BM_LFM_POs"; nombre[23][1]="Middle L Hand"
+				nombre[24][0]="BM_LFI_POs"; nombre[24][1]="Index L Hand"
+				nombre[25][0]="BM_LFT_POs"; nombre[25][1]="Thumb L Hand"
+				for (i=26;i<100;i++) {
+					nombre[i][0]="";nombre[i][1]=""
+					}
+				break;
+			case 1:
+				trackstotal=16;
+				nombre[0][0]="BM_Head_Rot"; nombre[0][1]="Head"
+				nombre[1][0]="BM_Neck_Rot"; nombre[1][1]="Neck (Note y is not used)"
+				nombre[2][0]="BM_Torso_Rot"; nombre[2][1]="Upper Torso (Chest)"
+				nombre[3][0]="BM_RA_S2E"; nombre[3][1]="Right Upper Arm"
+				nombre[4][0]="BM_RA_E2W"; nombre[4][1]="Right Forearm"
+				nombre[5][0]="BM_LA_S2E"; nombre[5][1]="Left Upper Arm"
+				nombre[6][0]="BM_LA_E2W"; nombre[6][1]="Left Forearm"
+				nombre[7][0]="BM_RL_H2K"; nombre[7][1]="Right Thigh"
+				nombre[8][0]="BM_RL_K2A"; nombre[8][1]="Right Lower Leg"
+				nombre[9][0]="BM_LL_H2K"; nombre[9][1]="Left Thigh"
+				nombre[10][0]="BM_LL_K2A"; nombre[10][1]="Left Lower Leg"
+				nombre[11][0]="BM_RF_Rot"; nombre[11][1]="Right Foot"
+				nombre[12][0]="BM_LF_Rot"; nombre[12][1]="Left Foot"
+				nombre[13][0]="BM_RH_Rot"; nombre[13][1]="Right Hand"
+				nombre[14][0]="BM_LH_Rot"; nombre[14][1]="Left Hand"
+				nombre[15][0]="BM_Toe_Angle"; nombre[15][1]="Toe Angle, x=Left Foot, z=Right Foot"
+				for (i=16;i<100;i++) {
+					nombre[i][0]="";nombre[i][1]=""
+					}
+				break;
+			case 2:
+				trackstotal=10;
+				nombre[0][0]="BM_RFP_Pos"; nombre[0][1]="Pinky R Hand"
+				nombre[1][0]="BM_RFR_POs"; nombre[1][1]="Ring R Hand"
+				nombre[2][0]="BM_RFM_POs"; nombre[2][1]="Middle R Hand"
+				nombre[3][0]="BM_RFI_POs"; nombre[3][1]="Index R Hand"
+				nombre[4][0]="BM_RFT_POs"; nombre[4][1]="Thumb R Hand"
+				nombre[5][0]="BM_LFP_Pos"; nombre[5][1]="Pinky L Hand"
+				nombre[6][0]="BM_LFR_POs"; nombre[6][1]="Ring L Hand"
+				nombre[7][0]="BM_LFM_POs"; nombre[7][1]="Middle L Hand"
+				nombre[8][0]="BM_LFI_POs"; nombre[8][1]="Index L Hand"
+				nombre[9][0]="BM_LFT_POs"; nombre[9][1]="Thumb L Hand"
+				for (i=10;i<100;i++) {
+					nombre[i][0]="";nombre[i][1]=""
+					}
+				break;
+			}
+		restaurar_n()
+		restaurartracks()
+		crearcodigo()
+		}
+	n_change(0)
+	function n_borrartodo() {
+		trackstotal=1;
+		nombre[0][0]=""; nombre[0][1]=""
+		nombre[1][0]=""; nombre[1][1]=""
+		nombre[2][0]=""; nombre[2][1]=""
+		nombre[3][0]=""; nombre[3][1]=""
+		nombre[4][0]=""; nombre[4][1]=""
+		nombre[5][0]=""; nombre[5][1]=""
+		nombre[6][0]=""; nombre[6][1]=""
+		nombre[7][0]=""; nombre[7][1]=""
+		nombre[8][0]=""; nombre[8][1]=""
+		nombre[9][0]=""; nombre[9][1]=""
+		restaurar_n()
+		restaurartracks()
+		crearcodigo()
+		}
+		
+	//de CLOCK
+	function clockmenos() {	//se mueven los valores de clock
+		clockprincipio=clockprincipio-clockdistancia;
+		if (clockprincipio<0) {clockprincipio=0;}
+		restaurarclocks()
+		restaurardatos()
+		restaurarmarcador()
+		}
+	function clockmenos2() {
+		clockprincipio=clockprincipio-clockdistancia*5;
+		if (clockprincipio<0) {clockprincipio=0;}
+		restaurarclocks()
+		restaurardatos()
+		restaurarmarcador()
+		}
+	function clockmenostodo() {
+		clockprincipio=0;
+		restaurarclocks()
+		restaurardatos()
+		restaurarmarcador()
+		}
+	function clockmas() {
+		clockprincipio=clockprincipio+clockdistancia;
+		if (clockprincipio>clockfinal-clockdistancia*10+clockdistancia) {clockprincipio=clockfinal-clockdistancia*10+clockdistancia;}
+		restaurarclocks()
+		restaurardatos()
+		restaurarmarcador()
+		}
+	function clockmas2() {
+		clockprincipio=clockprincipio+clockdistancia*5;
+		if (clockprincipio>clockfinal-clockdistancia*10+clockdistancia) {clockprincipio=clockfinal-clockdistancia*10+clockdistancia;}
+		restaurarclocks()
+		restaurardatos()
+		restaurarmarcador()
+		}
+	function clockmastodo() {
+		clockprincipio=clockfinal-clockdistancia*10+clockdistancia;
+		restaurarclocks()
+		restaurardatos()
+		restaurarmarcador()
+		}
+	//inicializar
+	function restaurarclocks() {
+		for (i=1;i<11;i++) {
+			var temp="clock"+i;
+			document.principal[temp].value=clockprincipio+clockdistancia*i-clockdistancia;
+			}
+		}
+	restaurarclocks()
+
+	//de los "TRACKS"
+	function rowmenos() {
+		if (trackprincipio>1) {
+			trackprincipio=trackprincipio-1;
+			restaurartracks()
+			}
+		restaurardatos()
+		restaurardatosderecha()
+		}
+	function rowmenos2() {
+		trackprincipio=trackprincipio-2;
+		if (trackprincipio<1) {trackprincipio=1;}
+		restaurartracks()
+		restaurardatos()
+		restaurardatosderecha()
+		}
+	function rowmenostodo() {
+		trackprincipio=1;
+		restaurartracks()
+		restaurardatos()
+		restaurardatosderecha()
+		}
+	function rowmas() {
+		if (trackprincipio<trackstotal-9) {
+			trackprincipio=trackprincipio+1;
+			restaurartracks()
+			}
+		restaurardatos()
+		restaurardatosderecha()
+		}
+	function rowmas2() {
+		trackprincipio=trackprincipio+2;
+		if (trackprincipio>trackstotal-9) {trackprincipio=trackstotal-9;}
+		restaurartracks()
+		restaurardatos()
+		restaurardatosderecha()
+		}
+	function rowmastodo() {
+		trackprincipio=trackstotal-9;
+		restaurartracks()
+		restaurardatos()
+		restaurardatosderecha()
+		}
+	//inicializar
+	function restaurartracks() {
+		for (i=0;i<10;i++) {
+			var temp="r"+i+"_1";
+			document.principal[temp].value=trackprincipio+i
+			var temp="r"+i+"_2";
+			document.principal[temp].value=nombre[trackprincipio+i-1][1]
+			}
+		}
+	restaurartracks()
+
+	//de los DATOS
+	function restaurardatos() {
+		for (i=0;i<10;i++) {
+			for (o=0;o<10;o++) {
+				var temp="r"+i+"_3_"+o
+				if (dato[i+trackprincipio-1][clockprincipio+clockdistancia*o][0]==0) {
+					document.principal[temp].src="empty2.gif"
+					} else {
+					document.principal[temp].src="dot.gif"
+					}
+				}
+			}
+		}
+	restaurardatos()
+
+	//del MARCADOR
+	var marcando=0;
+	function marcarclock(temp) {
+		marcando=clockprincipio+clockdistancia*temp;
+		for (i=0;i<10;i++) {
+			var temp2="marcador"+i;
+			document.principal[temp2].src="empty.gif"
+			}
+		var temp="marcador"+temp;
+		document.principal[temp].src="arrow.gif"
+		restaurardatosderecha()
+		}
+	marcarclock(0)
+	function restaurarmarcador() {
+		for (i=0;i<10;i++) {
+			var temp="marcador"+i;
+			document.principal[temp].src="empty.gif"
+			}
+		if (((marcando-clockprincipio)/clockdistancia)>(-1) && ((marcando-clockprincipio)/clockdistancia)<10) {
+			temp="marcador"+(marcando-clockprincipio)/clockdistancia
+			document.principal[temp].src="arrow.gif"
+			}
+		restaurardatosderecha()
+		}
+
+	//de los DATOS (derecha)
+	function restaurardatosderecha() {
+		for (i=0;i<10;i++) {
+			if (dato[i+trackprincipio-1][marcando][0]==1) {
+				for (o=1;o<4;o++) {
+					var temp="r"+i+"_4_"+o;
+					document.principal[temp].value=dato[i+trackprincipio-1][marcando][o]
+					}
+				} else {
+				for (o=1;o<4;o++) {
+					var temp="r"+i+"_4_"+o;
+					document.principal[temp].value=""
+					}
+				}
+			}
+		}
+
+	//de los BOTONES de BORRAR, GUARDAR y BORRAR
+	function yes(temp) {
+		for (i=1;i<4;i++) {
+			var temp2="r"+temp+"_4_"+i;
+			if (document.principal[temp2].value!="") {
+				dato[temp+trackprincipio-1][marcando][i]=document.principal[temp2].value;
+				} else {
+				dato[temp+trackprincipio-1][marcando][i]="0";
+				}
+			}
+		dato[temp+trackprincipio-1][marcando][0]="1";
+		restaurardatos()
+		restaurardatosderecha()
+		crearcodigo()
+		}
+	function no(temp) {
+		dato[temp+trackprincipio-1][marcando][0]=0;
+		dato[temp+trackprincipio-1][marcando][1]="";
+		dato[temp+trackprincipio-1][marcando][2]="";
+		dato[temp+trackprincipio-1][marcando][3]="";
+		restaurardatos()
+		restaurardatosderecha()
+		crearcodigo()
+		}
+
+	//del CODIGO
+	var cp;	//la variable de copypaste
+	function actualizar() {
+		document.principal.copypaste.value=cp;
+		}
+	function crearcodigo() {
+		cp="";
+		for (i=0;i<trackstotal;i++) {		//cada "track"
+			var temp=""
+			temp=new Array()
+			temp2=0
+			for (o=0;o<=clockfinal;o+=clockdistancia) {
+				if (dato[i][o][0]==1) {
+					temp2++
+					temp[temp2]=o
+					}
+				}
+			switch (temp2) {
+				case 0:
+					break;
+				case 1:
+					cp+="#declare "+nombre[i][0]+"=<"+dato[i][temp[1]][1]+","+dato[i][temp[1]][2]+","+dato[i][temp[1]][3]+">;\n"
+					break;
+				}
+			if (temp2>1) {
+				cp+="#switch (clock)\n"
+				if (temp[1]!=0) {
+					cp+=" #range (0,"+temp[1]+")\n"
+					cp+="  #declare "+nombre[i][0]+"=<"+dato[i][temp[1]][1]+","+dato[i][temp[1]][2]+","+dato[i][temp[1]][3]+">;\n"
+					cp+=" #break\n"
+					}
+				for (o=1;o<temp2;o++) {
+					cp+=" #range ("+temp[o]+","+temp[o+1]+")\n"
+					var T="clock";
+					var T1=temp[o];
+					var T2=temp[o+1];
+					var P1="<"+dato[i][temp[o]][1]+","+dato[i][temp[o]][2]+","+dato[i][temp[o]][3]+">";
+					var P2="<"+dato[i][temp[o+1]][1]+","+dato[i][temp[o+1]][2]+","+dato[i][temp[o+1]][3]+">";
+					cp+="  #declare "+nombre[i][0]+"=(clock-"+T1+")*("+P2+"-"+P1+")/("+T2+"-"+T1+")+"+P1+";\n"
+					cp+=" #break\n"
+					}
+				cp+=" #else\n"
+				cp+="  #declare "+nombre[i][0]+"=<"+dato[i][temp[temp2]][1]+","+dato[i][temp[temp2]][2]+","+dato[i][temp[temp2]][3]+">;\n"
+				cp+="#end\n"
+				}
+			}
+		actualizar()
+		}
+	crearcodigo()
+
+	//del "PROCESS"
+	function process() {
+		var temp=document.principal.process2.value;
+		temp=temp.toLowerCase();
+		if (temp) {
+			for (i=0;i<temp.length;i++) {
+				if (temp.indexOf("#declare",i)==i) {
+					for (o=0;o<trackstotal;o++) {
+						if (temp.indexOf(nombre[o][0].toLowerCase(),i+9)==i+9) {
+							//sacar los datos
+							dato[o][marcando][0]=1;
+							var temp2=temp.indexOf("<",i+9);
+							var temp3=temp.indexOf(",",i+9);
+							var temp4="";
+							for (p=temp2+1;p<temp3;p++) {
+								temp4+=temp.charAt(p);
+								}
+							dato[o][marcando][1]=eval(temp4);		//primer dato sacado
+							temp4="";
+							var temp2=temp3+1;
+							var temp3=temp.indexOf(",",temp3+1);
+							for (p=temp2;p<temp3;p++) {
+								temp4+=temp.charAt(p);
+								}
+							dato[o][marcando][2]=eval(temp4);		//segundo dato sacado
+							temp4="";
+							var temp2=temp3+1;
+							var temp3=temp.indexOf(">",temp3);
+							for (p=temp2;p<temp3;p++) {
+								temp4+=temp.charAt(p);
+								}
+							dato[o][marcando][3]=eval(temp4);		//tercer dato sacado
+							}
+						}
+					}
+				}
+			restaurardatos()
+			restaurardatosderecha()
+			crearcodigo()
+			}
+		}
+	
+	//LOAD y SAVE
+	function cookie( key, value ) {
+		var expdate = new Date();
+		expdate.setTime( expdate.getTime() + (24 * 60 * 60 * 1000) * 180 ); // 6 months from now
+		SetCookie ( key, value, expdate, "/" );
+		}
+	function load() {
+		window.status="Loading from slot "+(document.principal.slot.selectedIndex+1)+"...";
+		temps="BM_Anim_"+document.principal.slot.selectedIndex;
+		var temptotal=GetCookie(temps);
+		if (temptotal!=null) {
+			temparray=temptotal.split("*");
+			cleardata()
+			var temppos=0;
+			for (i=0;i<temparray[0];i++) {				//cargar datos
+				temppos++
+				dato[temparray[temppos]][temparray[temppos+1]][0]=1;
+				dato[temparray[temppos]][temparray[temppos+1]][1]=temparray[temppos+2];
+				dato[temparray[temppos]][temparray[temppos+1]][2]=temparray[temppos+3];
+				dato[temparray[temppos]][temparray[temppos+1]][3]=temparray[temppos+4];
+				temppos+=4
+				}
+			//ahora los nombres de los "tracks"
+			var temp=temps+"_TT";
+			trackstotal=GetCookie(temp)
+			temp=temps+"_TD";
+			temp2=GetCookie(temp);
+			temp=temp2.split("|");
+			for (i=0;i<trackstotal*2;i=i+2) {
+				nombre[i/2][0]=temp[i]
+				nombre[i/2][1]=temp[i+1]
+				}
+			for (i=trackstotal;i<100;i++) {
+				nombre[i][0]="";nombre[i][1]=""
+				}
+			restaurardatos()
+			restaurardatosderecha()
+			crearcodigo()
+			restaurar_n()
+			restaurartracks()
+			window.status="";
+			} else {
+			window.status="";
+			alert("Slot "+(document.principal.slot.selectedIndex+1)+" is empty");
+			}
+		}
+	function save() {
+		window.status="Saving in slot "+(document.principal.slot.selectedIndex+1)+"...";
+		temps="BM_Anim_"+document.principal.slot.selectedIndex;
+		var temptotal=0;
+		var temptotalstr="";
+		for (i=0;i<trackstotal;i++) {
+			for (o=0;o<=clockfinal;o+=clockdistancia) {
+				if (dato[i][o][0]==1) {
+					temptotal++
+					temptotalstr+="*"+i+"*"+o+"*"+dato[i][o][1]+"*"+dato[i][o][2]+"*"+dato[i][o][3]
+					}
+				}
+			}
+		temptotalstr=temptotal+temptotalstr
+		cookie( temps, temptotalstr );
+		//ahora los nombres de los "tracks"
+		var temp=temps+"_TT";
+		cookie( temp, trackstotal)
+		var temp2="";
+		for (i=0;i<trackstotal;i++) {
+			temp2+=nombre[i][0]+"|"+nombre[i][1]+"|"
+			}
+		temp=temps+"_TD";
+		cookie (temp, temp2)
+		window.status="";
+		}
+	function clearslot() {
+		window.status="Clearing slot "+(document.principal.slot.selectedIndex+1)+"...";
+		temps="BM_Anim_"+document.principal.slot.selectedIndex;
+		if (GetCookie(temps)) {
+			DeleteCookie(temps, "/")
+			var temp=temps+"_TT";
+			DeleteCookie(temp, "/")
+			var temp=temps+"_TD";
+			DeleteCookie(temp, "/")
+			}
+		window.status="";
+		}
+	function cleardata() {
+		window.status="Clearing data...";
+		for (i=0;i<trackstotal;i++) {					//limpiar datos
+			for (o=0;o<=clockfinal;o+=clockdistancia) {
+				for (p=0;p<=3;p++) {
+					dato[i][o][p]=0;
+					}
+				}
+			}
+		restaurardatos()
+		restaurardatosderecha()
+		crearcodigo()
+		window.status="";
+		}
+	function load2() {
+		window.status="Loading from external source...";
+		var temptotal=document.principal.external.value;
+		if (temptotal) {
+			temparray=temptotal.split("|");
+			cleardata()
+			var temptotaldatos=temparray[0]
+			var temppos=1;
+			for (i=0;i<temptotaldatos;i++) {				//cargar datos
+				temppos++
+				dato[temparray[temppos]][temparray[temppos+1]][0]=1;
+				dato[temparray[temppos]][temparray[temppos+1]][1]=temparray[temppos+2];
+				dato[temparray[temppos]][temparray[temppos+1]][2]=temparray[temppos+3];
+				dato[temparray[temppos]][temparray[temppos+1]][3]=temparray[temppos+4];
+				temppos+=4
+				}
+			//ahora los nombres de los "tracks"
+			temppos++
+			trackstotal=temparray[temppos]
+			temppos++
+//			alert(temppos+" "+temparray[temppos])
+//			alert(temppos+" "+temptotal)
+//			temp=temps+"_TD";
+//			temp2=GetCookie(temp);
+//			temp=temp2.split("|");
+			for (i=temppos;i<((trackstotal*2)+temppos);i=i+2) {
+//				alert(i+" "+temparray[i]+" "+temparray[i+1])
+//				alert((i-temppos)/2)
+				nombre[(i-temppos)/2][0]=temparray[i]
+				nombre[(i-temppos)/2][1]=temparray[i+1]
+				}
+			for (i=trackstotal;i<100;i++) {
+				nombre[i][0]="";nombre[i][1]=""
+				}
+			restaurardatos()
+			restaurardatosderecha()
+			crearcodigo()
+			restaurar_n()
+			restaurartracks()
+			window.status="";
+			} else {
+			window.status="";
+			}
+		}
+	function save2() {
+		window.status="Preparing for external save...";
+		var temptotal=0;
+		var temptotalstr=temptotal+"|";
+		for (i=0;i<trackstotal;i++) {
+			for (o=0;o<=clockfinal;o+=clockdistancia) {
+				if (dato[i][o][0]==1) {
+					temptotal++
+					temptotalstr+=i+"|"+o+"|"+dato[i][o][1]+"|"+dato[i][o][2]+"|"+dato[i][o][3]+"|"
+					}
+				}
+			}
+		//ahora los nombres de los "tracks"
+		temptotalstr=temptotal+"|"+temptotalstr;
+		temptotalstr+=trackstotal;
+		for (i=0;i<trackstotal;i++) {
+			temptotalstr+="|"+nombre[i][0]+"|"+nombre[i][1]
+			}
+		document.principal.external.value=temptotalstr;
+		window.status="";
+		}
+</script>
+
+</html>

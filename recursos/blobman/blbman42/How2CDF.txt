@@ -1,0 +1,77 @@
+******************************************************************************************
+                             ___ _     _    __  __
+                            | _ ) |___| |__|  \/  |__ _ _ _
+                            | _ \ / _ \ '_ \ |\/| / _` | ' \ v4.0
+                            |___/_\___/_.__/_|  |_\__,_|_||_|
+
+                          How to Create Costume Definition Files
+    
+                                    by Peter Houston
+
+******************************************************************************************
+
+When creating a Costume Definition File (CDF) it is a good idea to have a picture of what
+you are attempting to create.
+
+The first thing you should do is save a copy of layout.cdf to a new file, and then work
+through each of the Body Part options, uncommenting any that need to be changed, leave image 
+and bump maps until later.
+
+When creating CDFs I use Blob_Man_Studio.pov and Body_Part_Viewer.pov to position the 
+costume components correctly.  If rendered at [ 320 x 240 No AA ] the objects are quite easy
+to position and it doesn't take too long to render.
+
+Using the Body_Part_Viewer.pov file change the Body_Part_Switch variable on line 41, to 
+the body part you are going to work on.  If you render this you will notice six views of the 
+body part. Left Side, Front, Right Side, Back, Top and Underside.  The scale of the grid 
+is shown at the top as is the name of Body Part (this is important as most of the arms/legs look 
+similar).
+
+Also set BM_Gender (line 42) to 0 for Male or 1 for Female. 
+
+Uncomment line 18 and enter the filename of your CDF.
+
+Uncomment the Body Part Object you are going to work on in your CDF file, you will notice that 
+the object refers to itself to begin with.  This is important if you intend to use the DeBug
+Variable later on, if you do, make sure you create a union with the current object as part if it.
+
+e.g.
+#declare Head_Object=union { object{Head_Object}
+                             Your object definitions here
+                             ..
+                             ..
+                           }
+                           
+Create the objects you want to attached to the limb within this union in the CDF file.  They should be 
+positioned in relation to <0,0,0>.  If you change the ShowXYZ variable in Body_Part_Viewer.pov (line 54)
+to "on" you will be able to see where <0,0,0> is in relation to the limb. (It is set to on by defult)
+
+Tips
+----
+
+Think about how the objects you are placing will move with the limbs, for example if you are putting knee
+pads on a skater, should they be attached to the bottom of the Thigh Objects or the Top of the Calf Objects.
+use the Blob_Man_Studio.pov file to adjust the pose and see how the objects react.  If you take a look at
+sample.cdf you will notice that the helmet is attached to the Torso Object so that it remains static when the
+head moves.
+
+When adding objects to the hands be aware that the only static part is the palm area, any objects placed on
+the fingers will NOT move if the finger positions change.  Use the HandPose variable (line 43) test with different
+hand poses (the number refers to the Array Entry in "bm_hands.inc"
+
+If you intend to use Image Maps on the limb, remember that any object placed on that limb will adopt the image 
+map texture, if you do not want this to happen be sure you texture the objects in the CDF file.
+
+When creating objects that are identical on both left and right limbs, declare them as a seperate object located
+at <0,0,0> then add the object to the Body parts but flip them for the opposite side.  
+
+e.g Right Side would be : object {MyObject}
+    Left Side would be  : object {MyObject scale <-1,1,1>}
+
+If you intend to use the same objects in various CDF's why not create an include file with objects declared
+in it and located at <0,0,0> then just include this file at the beginning of your CDF file, and place those
+objects as normal in the body part objects.
+
+******************************************************************************************
+
+Last Updated : 9th April, 2000

@@ -1,0 +1,9 @@
+/************************************************************
+  Blob Man Hand Pose File for use with bmpeople.inc
+  This file was created automatically by Hand_Studio.pov
+*************************************************************/
+
+#declare BM_Hands=array[1][5]
+  {
+     { <5,45,5,0> ,<10,30,5,0> ,<5,15,5,0> ,<0,10,0,0> ,<0,-10,5,10>  },
+  }

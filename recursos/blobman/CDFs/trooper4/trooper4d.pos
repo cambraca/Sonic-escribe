@@ -1,0 +1,33 @@
+/************************************************************
+  Blob Man Pose File for use with bmpeople.inc
+  This file was created automatically by Blob_Man_Studio.POV
+*************************************************************/
+
+    #declare BM_Head_Rot     = <0,0,0> ;
+    #declare BM_Neck_Rot     = <0,0,0> ;
+    #declare BM_Torso_Rot    = <0,0,0> ;
+    #declare BM_RA_S2E       = <15,0,-10> ;
+    #declare BM_RA_E2W       = <113,-45,0> ;
+    #declare BM_LA_S2E       = <25,15,10> ;
+    #declare BM_LA_E2W       = <125,40,0> ;
+    #declare BM_RL_H2K       = <5,5,-15> ;
+    #declare BM_RL_K2A       = <-5,10,-5> ;
+    #declare BM_LL_H2K       = <5,-5,15> ;
+    #declare BM_LL_K2A       = <-5,-10,5> ;
+    #declare BM_RF_Rot       = <5,15,5> ;
+    #declare BM_LF_Rot       = <5,-15,-5> ;
+    #declare BM_Toe_Angle    = <0,0,0> ;
+    #declare BM_RH_Rot       = <0,0,0> ;
+    #declare BM_LH_Rot       = <-10,-60,0> ;
+
+// If you wish to use a predefined hand be sure to include
+// bm_hands.inc and then set BM_Pose_RHand/LHand to the array
+// entry number (0 being the first entry).  Otherwise set them 
+// to -1 and use the finger positions defined below
+
+    #declare BM_Pose_RHand   = 10;
+    #declare BM_Pose_LHand   = 0;
+
+    #declare BM_PoseNo       = -1;
+
+// End of File
